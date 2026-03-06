@@ -4,12 +4,12 @@ FROM gcc:13-bookworm
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install compiler and development tools
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends 
     git \
-    gdb \
+    gdb 
     valgrind \
     clang-format \
-    clang-tidy \
+    clang-tidy 
     vim \
     && rm -rf /var/lib/apt/lists/*
 

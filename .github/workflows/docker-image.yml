@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["cpp-sdk-docker-env"]
+  pull_request:
+    branches: ["cpp-sdk-docker-env"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag cpp-dev-env:1.0
+
+      - name: Verify development tools
+        run: |
+          docker run --rm cpp-dev-env:1.0 bash -c "
+          echo 'Checking development tools...'
+          gcc --version
+          g++ --version
+          cmake --version
+          gdb --version
+          "

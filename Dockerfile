@@ -5,7 +5,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install compiler and development tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    cmake \
     git \
     gdb \
     valgrind \
